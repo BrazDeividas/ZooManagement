@@ -1,26 +1,21 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace API.Models
 {
     public class Enclosure
     {
-        public enum EnclosureLocation
-        {
-            Inside,
-            Outside
-        }
-
-        public enum EnclosureSize {
-            Small,
-            Medium,
-            Large
-        } 
-
+        [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public EnclosureSize Size { get; set; }
+        [Required]
+        public string Name { get; set; } = "Unnamed";
+        [Required]
+        public string Size { get; set; }
         public int MaxCapacity { get; set; }
         public int CurrentCapacity { get; set; }
-        public EnclosureLocation Location { get; set; }
-        public List<string> Objects { get; set; }
-        public List<Animal> Animals { get; set; }
+        [Required]
+        public string Location { get; set; }
+        public List<string> Objects { get; set; } = new List<string>();
+        public List<Animal> Animals { get; set; } = new List<Animal>();
+        public List<Species> Species { get; set;} = new List<Species>();
     }
 }
